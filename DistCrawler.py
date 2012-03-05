@@ -22,7 +22,7 @@ class Crawler:
         current_url_parts = urlparse.urlparse(target)
         try:
             response = self.br.open(target)
-        except urllib2.HTTPError, error:
+        except:# urllib2.HTTPError, error:
             pass
         else:
             soup = BeautifulSoup(response)
@@ -40,7 +40,7 @@ class Crawler:
                         if link not in self.visited and link not in self.internal_urls:
                             self.internal_urls.append(link)
                     else:
-                        print 'http://:'+link_parts.netloc
+                        print link.url
             sleep(1)
         if len(self.internal_urls) > 0:
             next_target = self.internal_urls.pop()
@@ -49,8 +49,14 @@ class Crawler:
 
 if __name__ == '__main__':
     crawler = Crawler()
-    daemon = Pyro4.Daemon()
-    crawler_uri = daemon.register(crawler)
-    ns = Pyro4.locateNS()
-    ns.register('indexer.distcrawler', crawler_uri)
-    daemon.requestLoop()
+    urls = open('URLlist', 'r')
+    for line in urls:
+        line = line.strip()
+        crawler.crawl(line)
+    urls.close()
+#    daemon = Pyro4.Daemon()
+#    crawler_uri = daemon.register(crawler)
+#    ns = Pyro4.locateNS()
+#    ns.register('indexer.distcrawler', crawler_uri)
+#    daemon.requestLoop()
+

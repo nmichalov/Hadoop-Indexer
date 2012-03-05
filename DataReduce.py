@@ -17,7 +17,6 @@ class DataReduce:
     def reduce_data(self, crawl_data):
         if crawl_data.startswith('Content#'):
             crawl_data = crawl_data.split('#')
-            print crawl_data[2]
             url_file = re.sub('\/', ' ', crawl_data[1])
             out_file = '%s/%s' % (self.data_dir, url_file)
             content_file = open(out_file, 'a')
