@@ -11,8 +11,10 @@ but using the Hadoop Streaming API for distributed processing.  This package con
 *DistCrawler.py* is the actual crawler.  Given a URL (preferably the root page of a site) DistCrawler recursivley searches all the internal page links it finds.
 DistCrawler streams back page content, and external links via standard output.
 
-*CrawlDirector.py*
+*CrawlDirector.py* manages the list of visited URLs and the target URLs for each crawl batch.  It gathers target URLs from a text file called URLlist,
+and saves visited URLs in a serialized list.
 
-*SaveData.py*
+*SaveData.py* just specifies how to save the links and content streamed back from the crawler.
 
-*ProcContent.py*
+*ProcContent.py* uses, a python package for document modeling, to generate a topic model of the webpage content retrieved by the crawler.
+
