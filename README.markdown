@@ -14,7 +14,7 @@ DistCrawler streams back page content, and external links via standard output.
 *CrawlDirector.py* manages the list of visited URLs and the target URLs for each crawl batch.  It gathers target URLs from a text file called URLlist,
 and saves visited URLs in a serialized list.
 
-*SaveData.py* just specifies how to save the links and content streamed back from the crawler.
+*DataReduce.py* Specifies how to save the links and content streamed back from the crawler(s).
 
 *ProcContent.py* uses, a python package for document modeling, to generate a topic model of the webpage content retrieved by the crawler.
 

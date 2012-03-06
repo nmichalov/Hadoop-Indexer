@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+DistCrawler is the actual web crawler.  Given a URL it recursively crawls all domain internal links that it finds.  While crawling,
+it streams back the external links and page content that it encounters.
+"""
+
+
 import urlparse
 import urllib2
 import mechanize
@@ -40,7 +46,8 @@ class Crawler:
                         if link not in self.visited and link not in self.internal_urls:
                             self.internal_urls.append(link)
                     else:
-                        print link.url
+                        link = urlparse.urlparse(link.url).netloc
+                        print 'http://'+link
             sleep(1)
         if len(self.internal_urls) > 0:
             next_target = self.internal_urls.pop()

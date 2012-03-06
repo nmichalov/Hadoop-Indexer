@@ -5,6 +5,11 @@ import re
 import sys
 import cPickle
 
+"""
+Data reduce processes the content and links streamed back from the crawler(s).  It writes the content of each page to a file in the
+CrawlData directory.  URLs are appended to the URLlist file.
+"""
+
 
 class DataReduce:
 

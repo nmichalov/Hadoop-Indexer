@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""
+Keeps track of crawled, and to be crawled, URLs by means of the URLlist text file,
+and the visited_urls serialized file.  When using the hadoop streaming API, CrawlDirector serves
+as the crawler map function, delegating URLs to the distributed Crawlers.
+"""
+
+
 import sys
 import os
 import cPickle

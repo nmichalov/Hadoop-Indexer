@@ -4,6 +4,11 @@ import os
 import re
 from gensim import corpora, models, similarities
 
+"""
+ProcContent reads the data files containing the content of each web page.  It iterates over that data twice.  First to build a dictionary of the words
+contained in all files, then through each individual file in order to generate a topic model representation of each page's content.
+"""
+
 def page_text():
     for page_file in os.listdir('CrawlData'):
         content = open('CrawlData/'+page_file, 'r')
